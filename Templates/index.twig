@@ -66,7 +66,7 @@
                     <div class="col-sm-4">
 
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="./images/home/logo.png" alt=""/></a>
+                            <a href="index.php"><img src="./images/home/logo.png" alt=""/></a>
                         </div>
 
                         <div class="btn-group pull-right">
@@ -103,8 +103,8 @@
                             <ul class="nav navbar-nav">
                                 <!--<li><a href="#"><i class="fa fa-user"></i> Account</a></li>-->
                                 <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="checkout.twig"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
@@ -222,45 +222,45 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    {#<h2>Category</h2>#}
 
-                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">All</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="#">Shirts</a></h4>
-                                </div>
-                            </div>
-                        </div>
+                    {#<div class="panel-group category-products" id="accordian"><!--category-productsr-->#}
+                        {#<div class="panel panel-default">#}
+                            {#<div class="panel-heading">#}
+                                {#<h4 class="panel-title"><a href="#">All</a></h4>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="panel panel-default">#}
+                            {#<div class="panel panel-default">#}
+                                {#<div class="panel-heading">#}
+                                    {#<h4 class="panel-title"><a href="#">Shirts</a></h4>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Skirts</a></h4>
-                            </div>
-                        </div>
+                        {#<div class="panel panel-default">#}
+                            {#<div class="panel-heading">#}
+                                {#<h4 class="panel-title"><a href="#">Skirts</a></h4>#}
+                            {#</div>#}
+                        {#</div>#}
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Bags</a></h4>
-                            </div>
-                        </div>
+                        {#<div class="panel panel-default">#}
+                            {#<div class="panel-heading">#}
+                                {#<h4 class="panel-title"><a href="#">Bags</a></h4>#}
+                            {#</div>#}
+                        {#</div>#}
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Make-Up</a></h4>
-                            </div>
-                        </div>
-                        <!--<div class="panel panel-default">-->
-                        <!--<div class="panel-heading">-->
-                        <!--<h4 class="panel-title"><a href="#">Red</a></h4>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                    </div><!--/category-products-->
+                        {#<div class="panel panel-default">#}
+                            {#<div class="panel-heading">#}
+                                {#<h4 class="panel-title"><a href="#">Make-Up</a></h4>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<!--<div class="panel panel-default">-->#}
+                        {#<!--<div class="panel-heading">-->#}
+                        {#<!--<h4 class="panel-title"><a href="#">Red</a></h4>-->#}
+                        {#<!--</div>-->#}
+                        {#<!--</div>-->#}
+                    {#</div><!--/category-products-->#}
 
                     <div class="brands_products"><!--brands_products-->
                         <h2>Brands</h2>
@@ -272,10 +272,6 @@
                                 <li><a href="#"> <span class="pull-right"></span>Prada</a></li>
                                 <li><a href="#"> <span class="pull-right"></span>Gucci</a></li>
                                 <li><a href="#"> <span class="pull-right"></span>Dolce&Gabbana</a></li>
-                                <li><a href="#"> <span class="pull-right"></span>Mac</a></li>
-                                <li><a href="#"> <span class="pull-right"></span>Sleek</a></li>
-                                <li><a href="#"> <span class="pull-right"></span>Elle</a></li>
-                                <li><a href="#"> <span class="pull-right"></span>Revlon</a></li>
                             </ul>
                         </div>
                     </div><!--/brands_products-->
@@ -298,101 +294,8 @@
 
             <div class="col-sm-9 padding-right">
                 {# Shirts #}
-                <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Shirts</h2>
-                    {# Shirts #}
-                    {% for shirt in shirts %}
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="./images/home/{{ shirt.pic }}" alt=""/>
-                                        <h2>${{ shirt.price }}</h2>
-                                        <p>{{ shirt.shirt_name }}</p>
-                                        <p style="color: #FE980F">{{ shirt.brand_name }}</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add
-                                            to cart</a>
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>${{ shirt.price }}</h2>
-                                            <p>{{ shirt.shirt_name }}</p>
-                                            <p>{{ shirt.brand_name }}</p>
-                                            <a href="#" class="btn btn2-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
 
                 {# pagination shirt #}
-                <div class="title text-center">
-
-                    {% if total_pages_shirt > 0 %}
-                        <ul class='pagination pagination-sm' id="pagination">
-                            {% for i in 1..total_pages_shirt %}
-
-                                {% if loop.first %}
-                                    {% if shirt == 1 %}
-                                        <li class="prev disabled">
-                                            <a>
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="prev disabled">
-                                            <a>
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="prev">
-                                            <a href='index.php?shirt={{ 1 }}'>
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="prev">
-                                            <a href='index.php?shirt={{ shirt - 1 }}'>
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                                {% if loop.last %}
-                                    {% if shirt == total_pages_shirt %}
-                                        <li class="next disabled">
-                                            <a>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <li class="next disabled">
-                                            <a>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-
-                                        <li class="next">
-                                            <a href='index.php?shirt={{ shirt + 1 }}'>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <li class="next">
-                                            <a href='index.php?shirt={{ total_pages_shirt }}'>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
 
                 {# Skirts #}
                 <div class="features_items"><!--features_items-->
@@ -416,7 +319,7 @@
                                             <h2>${{ skirt.price }}</h2>
                                             <p>{{ skirt.skirt_name }}</p>
                                             <p>{{ skirt.brand_name }}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i
+                                            <a href="product-details.php?id={{ skirt.skirt_id }}" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                     </div>
@@ -492,200 +395,12 @@
                 </div>
 
                 {# Bags #}
-                <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Bags</h2>
-
-                    {% for bag in bags %}
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="./images/home/{{ bag.pic }}" alt=""/>
-                                        <h2>${{ bag.price }}</h2>
-                                        <p>{{ bag.bag_name }}</p>
-                                        <p style="color: #FE980F">{{ bag.brand_name }}</p>
-
-                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add
-                                            to cart</a>
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>${{ bag.price }}</h2>
-                                            <p>{{ bag.bag_name }}</p>
-                                            <p>{{ bag.brand_name }}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
 
                 {# pagination bag #}
-                <div class="title text-center">
-
-                    {% if total_pages_bag > 0 %}
-                        <ul class='pagination pagination-sm' id="pagination">
-                            {% for i in 1..total_pages_bag %}
-
-                                {% if loop.first %}
-                                    {% if bag == 1 %}
-                                        <li class="prev disabled">
-                                            <a>
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="prev disabled">
-                                            <a>
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="prev">
-                                            <a href='index.php?bag={{ 1 }}'>
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="prev">
-                                            <a href='index.php?bag={{ bag - 1 }}'>
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                                {% if loop.last %}
-                                    {% if bag == total_pages_bag %}
-                                        <li class="next disabled">
-                                            <a>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <li class="next disabled">
-                                            <a>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-
-                                        <li class="next">
-                                            <a href='index.php?bag={{ bag + 1 }}'>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <li class="next">
-                                            <a href='index.php?bag={{ total_pages_bag }}'>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
 
                 {# Make-Up #}
-                <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Make-Up</h2>
-
-                    {% for makeup in makeups %}
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="./images/home/{{ makeup.pic }}" alt=""/>
-                                        <h2>${{ makeup.price }}</h2>
-                                        <p>{{ makeup.make_up_name }}</p>
-                                        <p style="color: #FE980F">{{ makeup.brand_name }}</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add
-                                            to cart</a>
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>${{ makeup.price }}</h2>
-                                            <p>{{ makeup.make_up_name }}</p>
-                                            <p>{{ makeup.brand_name }}</p>
-
-                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
 
                 {# pagination makeup #}
-                <div class="title text-center">
-
-                    {% if total_pages_make_up > 0 %}
-                        <ul class='pagination pagination-sm' id="pagination">
-                            {% for i in 1..total_pages_make_up %}
-
-                                {% if loop.first %}
-                                    {% if make_up == 1 %}
-                                        <li class="prev disabled">
-                                            <a>
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="prev disabled">
-                                            <a>
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="prev">
-                                            <a href='index.php?make_up={{ 1 }}'>
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="prev">
-                                            <a href='index.php?make_up={{ make_up - 1 }}'>
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                                {% if loop.last %}
-                                    {% if make_up == total_pages_make_up %}
-                                        <li class="next disabled">
-                                            <a>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <li class="next disabled">
-                                            <a>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    {% else %}
-
-                                        <li class="next">
-                                            <a href='index.php?make_up={{ make_up + 1 }}'>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <li class="next">
-                                            <a href='index.php?make_up={{ total_pages_make_up }}'>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
 
             </div>
         </div>
