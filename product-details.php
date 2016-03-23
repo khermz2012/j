@@ -35,6 +35,7 @@ if (isset($_GET['id'])) {
                 'brand_name' => $addSkirt['brand_name'],
                 'quantity' => 1,
                 'pic' => $addSkirt['pic'],
+                'qty' => $addSkirt['qty'],
                 'price' => $addSkirt['price'],
                 'total' => $addSkirt['price']
             ];

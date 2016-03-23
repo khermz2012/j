@@ -88,9 +88,9 @@
                         <ul class="nav navbar-nav">
                             {#<li><a href=""><i class="fa fa-user"></i> Account</a></li>#}
                             {#<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>#}
-                            <li><a href="checkout.twig"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="checkout.php"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.php" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -116,11 +116,11 @@
                             {#<li><a href="index.twig">Home</a></li>#}
                             {#<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>#}
                             {#<ul role="menu" class="sub-menu">#}
-                            {#<li><a href="shop.html">Products</a></li>#}
+                            {#<li><a href="order.twig">Products</a></li>#}
                             {#<li><a href="product-details.twig">Product Details</a></li>#}
                             {#<li><a href="checkout.twig">Checkout</a></li>#}
                             {#<li><a href="cart.twig" class="active">Cart</a></li>#}
-                            {#<li><a href="login.html">Login</a></li>#}
+                            {#<li><a href="login.twig">Login</a></li>#}
                             {#</ul>#}
                             {#</li>#}
                             {#<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>#}
@@ -176,13 +176,13 @@
                             <p>Web ID: {{ cart.item }}</p>
                         </td>
                         <td class="cart_price">
-                            <p>{{ cart.skirt.price }}</p>
+                            <p>${{ cart.price }}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
                                 <a class="cart_quantity_up" href="cart.php?id={{ cart.item }}&action=add"> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{ cart.quantity }}"
-                                       autocomplete="off" size="2" disabled>
+                                       autocomplete="off" size="2" max="{{ cart.qty }}" disabled>
                                 <a class="cart_quantity_down" href="cart.php?id={{ cart.item }}&action=sub"> - </a>
                             </div>
                         </td>
@@ -203,9 +203,8 @@
 <section id="do_action">
     <div class="container">
         <div class="heading">
-            <h3>What would you like to do next?</h3>
-            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
-                delivery cost.</p>
+            <h3>Please check out here.</h3>
+            <p>Thank you for shopping with Trendy-Gear !!</p>
         </div>
         <div class="row">
 

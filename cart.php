@@ -32,8 +32,13 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
                     'quantity' => $_SESSION['cart'][$id]['quantity'],
                     'pic' => $addSkirt['pic'],
                     'price' => $addSkirt['price'],
+                    'qty' => $addSkirt['qty'],
                     'total' => $addSkirt['price'] * $_SESSION['cart'][$id]['quantity']
                 ];
+
+                if ($_SESSION['cart'][$id]['quantity'] > $_SESSION['cart'][$id]['qty']) {
+                    $_SESSION['cart'][$id]['quantity'] = $_SESSION['cart'][$id]['qty'];
+                }
                 break;
 
             case 'sub':
@@ -48,6 +53,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
                     'quantity' => $_SESSION['cart'][$id]['quantity'],
                     'pic' => $addSkirt['pic'],
                     'price' => $addSkirt['price'],
+                    'qty' => $addSkirt['qty'],
                     'total' => $addSkirt['price'] * $_SESSION['cart'][$id]['quantity']
                 ];
 

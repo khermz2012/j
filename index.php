@@ -12,7 +12,7 @@ include_once 'render_config.php';
 
 session_start();
 
-$_SESSION['logged-in'] = false;
+//$_SESSION['logged-in'] = false;
 
 $item = new Item();
 

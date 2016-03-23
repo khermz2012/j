@@ -9,11 +9,22 @@
 include_once 'Item.php';
 include_once 'render_config.php';
 
-echo $twig->render('checkout.twig', [
-//    'carts' => isset($_SESSION['cart']) ? $_SESSION['cart'] : '',
-//    'total' => $total
-//    'skirt_brand_name' => $sk_details['brand_name'],
-//    'skirt_price' => $sk_details['price'],
-//    'skirt_qty' => $sk_details['qty'],
-//    'skirt_pic' => $sk_details['pic']
-]);
+session_start();
+
+$total = 0;
+if (!isset($_SESSION['logged-in'])) {
+    header('Location: login.php');
+} else {
+
+    if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+
+        foreach ($_SESSION['cart'] as $skirt_id => $details) {
+            $total += $_SESSION['cart'][$skirt_id]['total'];
+        }
+    }
+
+    echo $twig->render('checkout.twig', [
+        'carts' => isset($_SESSION['cart']) ? $_SESSION['cart'] : '',
+        'total' => $total
+    ]);
+}

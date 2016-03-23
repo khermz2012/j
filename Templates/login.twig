@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Checkout | E-Shopper</title>
+    <title>Login | E-Shopper</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/prettyPhoto.css" rel="stylesheet">
@@ -13,6 +13,7 @@
     <link href="./css/animate.css" rel="stylesheet">
     <link href="./css/main.css" rel="stylesheet">
     <link href="./css/responsive.css" rel="stylesheet">
+    <script src="./js/jquery.js"></script>
     <!--[if lt IE 9]>
     <script src="./js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -23,6 +24,15 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
+
+<script type="text/javascript">
+//    $(document).ready(function () {
+//        if (result == 1) {
+//            $("#username").css("border", " 1px solid crimson");
+//        }
+//    });
+</script>
+
 
 <body>
 <header id="header"><!--header-->
@@ -88,9 +98,9 @@
                         <ul class="nav navbar-nav">
                             {#<li><a href=""><i class="fa fa-user"></i> Account</a></li>#}
                             {#<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>#}
-                            <li><a href="checkout.php" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
+                            {#<li><a href="checkout.twig"><i class="fa fa-crosshairs"></i> Checkout</a></li>#}
+                            {#<li><a href="cart.twig"><i class="fa fa-shopping-cart"></i> Cart</a></li>#}
+                            {#<li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login</a></li>#}
                         </ul>
                     </div>
                 </div>
@@ -112,26 +122,26 @@
                         </button>
                     </div>
                     <div class="mainmenu pull-left">
-                        {#<ul class="nav navbar-nav collapse navbar-collapse">#}
-                        {#<li><a href="index.twig">Home</a></li>#}
-                        {#<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>#}
-                        {#<ul role="menu" class="sub-menu">#}
-                        {#<li><a href="order.twig">Products</a></li>#}
-                        {#<li><a href="product-details.twig">Product Details</a></li>#}
-                        {#<li><a href="checkout.html" class="active">Checkout</a></li>#}
-                        {#<li><a href="cart.twig">Cart</a></li>#}
-                        {#<li><a href="login.twig">Login</a></li>#}
-                        {#</ul>#}
-                        {#</li>#}
-                        {#<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>#}
-                        {#<ul role="menu" class="sub-menu">#}
-                        {#<li><a href="blog.html">Blog List</a></li>#}
-                        {#<li><a href="blog-single.html">Blog Single</a></li>#}
-                        {#</ul>#}
-                        {#</li>#}
-                        {#<li><a href="404.html">404</a></li>#}
-                        {#<li><a href="contact-us.html">Contact</a></li>#}
-                        {#</ul>#}
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            {#<li><a href="index.twig">Home</a></li>#}
+                            {#<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>#}
+                            {#<ul role="menu" class="sub-menu">#}
+                            {#<li><a href="order.twig">Products</a></li>#}
+                            {#<li><a href="product-details.twig">Product Details</a></li>#}
+                            {#<li><a href="checkout.twig">Checkout</a></li>#}
+                            {#<li><a href="cart.twig">Cart</a></li>#}
+                            {#<li><a href="login.html" class="active">Login</a></li>#}
+                            {#</ul>#}
+                            {#</li>#}
+                            {#<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>#}
+                            {#<ul role="menu" class="sub-menu">#}
+                            {#<li><a href="blog.html">Blog List</a></li>#}
+                            {#<li><a href="blog-single.html">Blog Single</a></li>#}
+                            {#</ul>#}
+                            {#</li>#}
+                            {#<li><a href="404.html">404</a></li>#}
+                            {#<li><a href="contact-us.html">Contact</a></li>#}
+                        </ul>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -144,166 +154,40 @@
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<section id="cart_items">
+<section id="form"><!--form-->
     <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Check out</li>
-            </ol>
-        </div><!--/breadcrums-->
-
-        <div class="step-one">
-            {#<h2 class="heading">Step1</h2>#}
-        </div>
-        <div class="checkout-options">
-            {#<h3>New User</h3>#}
-            {#<p>Checkout options</p>#}
-            {#<ul class="nav">#}
-            {#<li>#}
-            {#<label><input type="checkbox"> Register Account</label>#}
-            {#</li>#}
-            {#<li>#}
-            {#<label><input type="checkbox"> Guest Checkout</label>#}
-            {#</li>#}
-            {#<li>#}
-            {#<a href=""><i class="fa fa-times"></i>Cancel</a>#}
-            {#</li>#}
-            {#</ul>#}
-        </div><!--/checkout-options-->
-
-        <div class="register-req">
-            <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-        </div><!--/register-req-->
-
-        <div class="shopper-informations">
-            <div class="row">
-
-                <div class="col-sm-4">
-
-                </div>
-
-                <div class="col-sm-8 clearfix">
-                    <div class="shopper-info">
-                        <p>Customer Information</p>
-                        <div class="bill-to">
-                            {#<p>Bill To</p>#}
-                            <div class="form-one">
-                                <form method="post" action="terms.php">
-                                    <input type="text" placeholder="Company Name" name="comp_name">
-                                    <input type="text" placeholder="Email*" name="email">
-                                    {#<input type="text" placeholder="Title">#}
-                                    <input type="text" placeholder="First Name *" name="firstname">
-                                    <input type="text" placeholder="Middle Name" name="middlename">
-                                    <input type="text" placeholder="Last Name *" name="lastname">
-                                    <input type="text" placeholder="Address*" name="address">
-                                    <input type="text" placeholder="Phone *" maxlength="10" name="phone">
-                                    <select name="country">
-                                        <option disabled>-- Country --</option>
-                                        <option>United States</option>
-                                        <option>Bangladesh</option>
-                                        <option>UK</option>
-                                        <option>India</option>
-                                        <option>Pakistan</option>
-                                        <option>Ukraine</option>
-                                        <option>Canada</option>
-                                        <option>Ghana</option>
-                                    </select>
-
-                                    <hr>
-
-                                    <label><input type="checkbox" name="receipt" value="y">Print Receipt</label>
-                                    <div>
-                                        <button type="submit" class="btn btn-primary">Continue</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form"><!--login form-->
+                    <h2>Login to your account</h2>
+                    <form action="login.php" method="post">
+                        <input type="text" placeholder="Name" name="username" id="username"/>
+                        <input type="email" placeholder="Email Address" name="email" id="email"/>
+							<span>
+								<input type="checkbox" class="checkbox">
+								Keep me signed in
+							</span>
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </form>
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">OR</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form"><!--sign up form-->
+                    <h2>New User Signup!</h2>
+                    <form action="sign-up.php" method="post">
+                        <input type="text" placeholder="Name" name="new_username"/>
+                        <input type="email" placeholder="Email Address" name="new_address"/>
+                        <input type="password" placeholder="Password" name="new_password"/>
+                        <button type="submit" class="btn btn-default">Signup</button>
+                    </form>
+                </div><!--/sign up form-->
             </div>
         </div>
-        <div class="review-payment">
-            <h2>Review & Payment</h2>
-        </div>
-
-        <div class="table-responsive cart_info">
-            <table class="table table-condensed">
-                <thead>
-                <tr class="cart_menu">
-                    <td class="image">Item</td>
-                    <td class="description"></td>
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="total">Total</td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tbody>
-                {% for cart in carts %}
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="./images/home/{{ cart.pic }}" alt="" height="110px" width="110px"></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">{{ cart.skirt_name }}</a></h4>
-                            <p>Web ID: {{ cart.item }}</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>${{ cart.price }}</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href="cart.php?id={{ cart.item }}&action=add"> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity"
-                                       value="{{ cart.quantity }}"
-                                       autocomplete="off"
-                                       size="2" disabled>
-                                <a class="cart_quantity_down" href="cart.php?id={{ cart.item }}&action=sub"> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">${{ cart.total }}</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                {% endfor %}
-
-                <tr>
-                    <td colspan="4">&nbsp;</td>
-                    <td colspan="2">
-                        <table class="table table-condensed total-result">
-                            {#<tr>#}
-                            {#<td>Cart Sub Total</td>#}
-                            {#<td>$59</td>#}
-                            {#</tr>#}
-                            {#<tr>#}
-                            {#<td>Exo Tax</td>#}
-                            {#<td>$2</td>#}
-                            {#</tr>#}
-                            <tr class="shipping-cost">
-                                <td>Shipping Cost</td>
-                                <td>Free</td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td><span>${{ total }}</span></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        {#<div class="payment-options">#}
-        {#<span>#}
-        {#<label><input type="checkbox">Print Receipt</label>#}
-        {#</span>#}
-        {#</div>#}
     </div>
-</section> <!--/#cart_items-->
+</section><!--/form-->
 
 
 <footer id="footer"><!--Footer-->
@@ -466,10 +350,9 @@
 
 </footer><!--/Footer-->
 
-
-<script src="./js/jquery.js"></script>
-<script src="./js/bootstrap.min.js"></script>
+<script src="./js/price-range.js"></script>
 <script src="./js/jquery.scrollUp.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <script src="./js/jquery.prettyPhoto.js"></script>
 <script src="./js/main.js"></script>
 </body>
