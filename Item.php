@@ -18,8 +18,17 @@ class Item extends Adb
      */
     public function allSkirts($sf, $np)
     {
-        $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id  LIMIT $sf,$np";
+        $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id LIMIT $sf,$np";
         return $this->query($query);
+    }
+
+    public function getSkirtBrands($brand, $sf, $np)
+    {
+        $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id AND b.brand_name=? LIMIT $sf,$np";
+        $s = $this->prepare($query);
+        $s->bind_param('s', $brand);
+        $s->execute();
+        return $s->get_result();
     }
 
     /**
@@ -28,6 +37,14 @@ class Item extends Adb
     public function countSkirts()
     {
         $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id";
+        $r = $this->query($query);
+        $no = mysqli_num_rows($r);
+        return $no;
+    }
+
+    public function countSkirtBrand($brand)
+    {
+        $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id AND brand_name='$brand'";
         $r = $this->query($query);
         $no = mysqli_num_rows($r);
         return $no;
@@ -42,19 +59,19 @@ class Item extends Adb
         return $s->get_result();
     }
 
-    public function updateSkirt($id, $qty)
+    public function updateSkirt($id, $qty, $nb)
     {
-        $query = "UPDATE skirts SET qty=? WHERE skirt_id=?";
+        $query = "UPDATE skirts SET qty=?,num_bought=? WHERE skirt_id=?";
         $s = $this->prepare($query);
-        $s->bind_param('ii', $qty, $id);
+        $s->bind_param('iii', $qty, $nb, $id);
         $s->execute();
     }
 
-    public function makeCustomer($f, $m, $l, $em, $a, $c, $p)
+    public function makeCustomer($f, $m, $l, $em, $a, $c, $p, $ib)
     {
-        $query = "INSERT INTO customer(firstname, middlename, lastname, email, address, country, phone) VALUES (?,?,?,?,?,?,?)";
+        $query = "INSERT INTO customer(firstname, middlename, lastname, email, address, country, phone,items_bought) VALUES (?,?,?,?,?,?,?,?)";
         $s = $this->prepare($query);
-        $s->bind_param('sssssss', $f, $m, $l, $em, $a, $c, $p);
+        $s->bind_param('ssssssss', $f, $m, $l, $em, $a, $c, $p, $ib);
         $s->execute();
     }
 
@@ -67,11 +84,20 @@ class Item extends Adb
         return $s->get_result();
     }
 
-    public function makeOrder($cid, $date, $items)
+    public function getCustomerEmail($email)
     {
-        $query = "INSERT INTO orders(cust_id,date,items_bought) VALUES (?,?,?)";
+        $query = "SELECT email FROM customer WHERE email =?";
         $s = $this->prepare($query);
-        $s->bind_param('iss', $cid, $date, $items);
+        $s->bind_param('s', $email);
+        $s->execute();
+        return $s->get_result();
+    }
+
+    public function makeOrder($cid, $date)
+    {
+        $query = "INSERT INTO orders(cust_id,date) VALUES (?,?)";
+        $s = $this->prepare($query);
+        $s->bind_param('is', $cid, $date);
         $s->execute();
     }
 

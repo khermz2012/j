@@ -18,21 +18,17 @@ if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $new_username = trim($username, " ");
     $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    $row = $user->validate($new_username, $email);
+    $row = $user->validate($new_username, $email, $password);
     $details = $row->fetch_array(MYSQLI_ASSOC);
 
     //Empty string
     if (strlen($new_username) == 0 || strlen($email) == 0) {
-
-        echo '<script type="text/javascript">';
-        echo 'alert("Please sign-up");';
-        echo '</script >';
-
         header('Location: login.php');
     } else {
 
-        if ($details['username'] === $new_username && $details['email'] === $email) {
+        if ($details['username'] === $new_username && $details['email'] === $email && $details['password'] === $password) {
             $_SESSION['logged-in'] = true;
             $_SESSION['email'] = $email;
             header('Location: cart.php');
