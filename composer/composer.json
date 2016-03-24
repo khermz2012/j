@@ -10,6 +10,7 @@
     }
   ],
   "require": {
-    "twig/twig": "1.6.5"
+    "twig/twig": "1.6.5",
+    "phpmailer/phpmailer": "5.4.x-dev"
   }
 }

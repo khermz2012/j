@@ -1,11 +1,8 @@
 <?php
-
 session_start();
-
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,16 +30,21 @@ session_start();
 <body>
 <div class="container text-center">
     <div class="logo-404">
-        <a href="index.twig"><img src="./images/home/logo.png" alt=""/></a>
+        <a href="index.php"><img src="./images/home/logo.png" alt=""/></a>
     </div>
     <div class="content-404">
-<!--        <img src="./images/errors/404.png" class="img-responsive" alt=""/>-->
+        <!--        <img src="./images/errors/404.png" class="img-responsive" alt=""/>-->
         <h1>YOUR ORDER IS BEING PROCESSED.</h1>
-        <p>A mail has been sent to <?php isset($_SESSION['email']) ? $_SESSION['email'] : ''?></p>
+        <p>A mail has been sent to <span style="color: #FE980F">{{ email }}</span> for verification.</p>
+        {#<br>#}
+        <h4 style="color: #FC9A11">Thank you for shopping with Trendy-Gear.</h4>
+        <br>
+        <h4><a href="customerReceipt.php" name="receipt" target="_blank">Print Receipt</a></h4>
         <h2><a href="index.php">Bring me back Home</a></h2>
+        <br>
+
     </div>
 </div>
-
 
 <script src="./js/jquery.js"></script>
 <script src="./js/price-range.js"></script>

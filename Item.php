@@ -42,4 +42,37 @@ class Item extends Adb
         return $s->get_result();
     }
 
+    public function updateSkirt($id, $qty)
+    {
+        $query = "UPDATE skirts SET qty=? WHERE skirt_id=?";
+        $s = $this->prepare($query);
+        $s->bind_param('ii', $qty, $id);
+        $s->execute();
+    }
+
+    public function makeCustomer($f, $m, $l, $em, $a, $c, $p)
+    {
+        $query = "INSERT INTO customer(firstname, middlename, lastname, email, address, country, phone) VALUES (?,?,?,?,?,?,?)";
+        $s = $this->prepare($query);
+        $s->bind_param('sssssss', $f, $m, $l, $em, $a, $c, $p);
+        $s->execute();
+    }
+
+    public function getCustomerDetails($email)
+    {
+        $query = "SELECT cust_id FROM customer WHERE email = ?";
+        $s = $this->prepare($query);
+        $s->bind_param('s', $email);
+        $s->execute();
+        return $s->get_result();
+    }
+
+    public function makeOrder($cid, $date, $items)
+    {
+        $query = "INSERT INTO orders(cust_id,date,items_bought) VALUES (?,?,?)";
+        $s = $this->prepare($query);
+        $s->bind_param('iss', $cid, $date, $items);
+        $s->execute();
+    }
+
 }

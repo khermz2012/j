@@ -189,7 +189,7 @@
                         <div class="bill-to">
                             {#<p>Bill To</p>#}
                             <div class="form-one">
-                                <form method="post" action="terms.php">
+                                <form method="post" action="transaction.php">
                                     <input type="text" placeholder="Company Name" name="comp_name">
                                     <input type="text" placeholder="Email*" name="email">
                                     {#<input type="text" placeholder="Title">#}
@@ -209,15 +209,17 @@
                                         <option>Canada</option>
                                         <option>Ghana</option>
                                     </select>
-
                                     <hr>
 
-                                    <label><input type="checkbox" name="receipt" value="y">Print Receipt</label>
+                                    <a href="terms.php" name="receipt" target="_blank">Terms and Conditions</a>
+
                                     <div>
                                         <button type="submit" class="btn btn-primary">Continue</button>
                                     </div>
                                 </form>
                             </div>
+
+                            {#<label><input type="checkbox" name="receipt" value="y">Print Receipt</label>#}
                         </div>
                     </div>
                 </div>
@@ -418,7 +420,7 @@
                     <div class="single-widget">
                         <h2>Policies</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="">Terms of Use</a></li>
+                            <li><a href="terms.php" target="_blank">Terms of Use</a></li>
                             <li><a href="">Privecy Policy</a></li>
                             <li><a href="">Refund Policy</a></li>
                             <li><a href="">Billing System</a></li>
