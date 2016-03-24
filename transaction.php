@@ -6,16 +6,26 @@ include_once 'render_config.php';
 
 session_start();
 
+//<input type="text" placeholder="Company Name" name="comp_name">
+//<input type="text" placeholder="Email*" name="email" value="{{ email }}" disabled>
+//{#<input type="text" placeholder="Title">#}
+//    <input type="text" placeholder="First Name *" name="firstname">
+//    <input type="text" placeholder="Middle Name" name="middlename">
+//    <input type="text" placeholder="Last Name *" name="lastname">
+//    <input type="text" placeholder="Address*" name="address">
+//    <input type="tel" placeholder="Phone *" maxlength="10" name="phone">
+//    <select name="country">
 
-if (isset($_POST['email'])) {
-    $email = trim($_POST['email'], " ");
+//$item = new Item();
+//
+if (isset($_POST['mail'])) {
+    $email = trim($_POST['mail'], " ");
     $firstname = trim($_POST['firstname'], " ");
     $middlename = trim($_POST['middlename'], " ");
     $lastname = trim($_POST['lastname'], " ");
     $address = trim($_POST['address'], " ");
     $phone = trim($_POST['phone'], " ");
     $country = $_POST['country'];
-//    $check = isset($_POST['receipt']) ? $_POST['receipt'] : '';
 
     $len_email = strlen($email);
     $len_firstname = strlen($firstname);
@@ -23,44 +33,81 @@ if (isset($_POST['email'])) {
     $len_address = strlen($address);
     $len_phone = strlen($phone);
 
-//    $myfile = "./customer_history/.'$email'.txt";
+    $item = new Item();
     $date = date('d/m/Y');
-//
-//    file_put_contents($myfile,$date,FILE_APPEND);
 
     if ($len_email == 0 || $len_firstname == 0 || $len_lastname == 0 || $len_address == 0 || $len_phone == 0) {
+
         header('Location: checkout.php');
     } else if ($len_email > 0 && $len_firstname > 0 && $len_lastname > 0 && $len_address > 0 && $len_phone > 0) {
 
         $_SESSION['address'] = $address;
 
-
-        foreach ($_SESSION['cart'] as $skirt_id => $details) {
-
-            $id = $_SESSION['cart'][$skirt_id]['item'];
-            $cart_qty = $_SESSION['cart'][$skirt_id]['quantity'];
-            $item = new Item();
-            $row = $item->getSkirtDetails($id);
-            $ss = $row->fetch_array(MYSQLI_ASSOC);
-            $new_qty = $ss['qty'] - $cart_qty;
-            $new_num_bought = $ss['num_bought'] + $cart_qty;
-
-            $item->updateSkirt($id, $new_qty, $new_num_bought);
-        }
-
         $row = $item->getCustomerEmail($email);
-        $cust_details = $row->fetch_array(MYSQLI_ASSOC);
+        $cust_em = $row->fetch_array(MYSQLI_ASSOC);
 
-        $item->makeCustomer($firstname, $middlename, $lastname, $email, $address, $country, $phone, 'ttt');
+        //if customer does not exist
+        if (is_null($cust_em['email'])) {
 
-        $row1 = $item->getCustomerDetails($email);
-        $ss1 = $row1->fetch_array(MYSQLI_ASSOC);
-        $cid = $ss1['cust_id'];
-//        $date = date("d/m/Y");
+            $my_file = "./customer_history/" . "$email" . ".txt";
 
-        $item->makeOrder($cid, $date);
+            foreach ($_SESSION['cart'] as $skirt_id => $details) {
 
-        header('Location: orders.php');
+                $id = $_SESSION['cart'][$skirt_id]['item'];
+                $cart_qty = $_SESSION['cart'][$skirt_id]['quantity'];
+                $item = new Item();
+                $row = $item->getSkirtDetails($id);
+                $ss = $row->fetch_array(MYSQLI_ASSOC);
+                $new_qty = $ss['qty'] - $cart_qty;
+                $new_num_bought = $ss['num_bought'] + $cart_qty;
+
+                $data = $_SESSION['cart'][$skirt_id]['item'] . "\n";
+
+                file_put_contents($my_file, $data, FILE_APPEND);
+//
+                $item->updateSkirt($id, $new_qty, $new_num_bought);
+            }
+
+            $row = $item->getCustomerEmail($email);
+            $cust_details = $row->fetch_array(MYSQLI_ASSOC);
+
+            $item->makeCustomer($firstname, $middlename, $lastname, $email, $address, $country, $phone, $my_file);
+
+            $row1 = $item->getCustomerDetails($email);
+            $ss1 = $row1->fetch_array(MYSQLI_ASSOC);
+            $cid = $ss1['cust_id'];
+
+            $item->makeOrder($cid, $date);
+
+            header('Location: orders.php');
+        } elseif (!is_null($cust_em['email']) && strcmp($cust_em['email'], $email) === 0) {
+            $my_file1 = "./customer_history/" . "$email" . ".txt";
+
+            foreach ($_SESSION['cart'] as $skirt_id => $details) {
+
+                $id = $_SESSION['cart'][$skirt_id]['item'];
+                $cart_qty = $_SESSION['cart'][$skirt_id]['quantity'];
+                $item = new Item();
+                $row = $item->getSkirtDetails($id);
+                $ss = $row->fetch_array(MYSQLI_ASSOC);
+                $new_qty = $ss['qty'] - $cart_qty;
+                $new_num_bought = $ss['num_bought'] + $cart_qty;
+
+                $data1 = $_SESSION['cart'][$skirt_id]['item'] . "\n";
+
+                file_put_contents($my_file1, $data1, FILE_APPEND);
+
+                $item->updateSkirt($id, $new_qty, $new_num_bought);
+            }
+
+            $row1 = $item->getCustomerDetails($email);
+            $ss1 = $row1->fetch_array(MYSQLI_ASSOC);
+            $cid = $ss1['cust_id'];
+
+            $item->makeOrder($cid, $date);
+        }
     }
 }
+
+
 
