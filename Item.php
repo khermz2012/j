@@ -101,4 +101,19 @@ class Item extends Adb
         $s->execute();
     }
 
+    public function getItemsBought($email)
+    {
+        $query = "SELECT items_bought FROM customer WHERE email=?";
+        $s = $this->prepare($query);
+        $s->bind_param('s', $email);
+        $s->execute();
+        return $s->get_result();
+    }
+
+    public function getBrands()
+    {
+        $query = "SELECT * FROM brand";
+        return $this->query($query);
+    }
+
 }

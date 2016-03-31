@@ -136,47 +136,51 @@
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="39" parent="7" name="date">
+      <column id="39" parent="7" name="confirmed">
+        <mandatory>1</mandatory>
+        <data-type>int(1)</data-type>
+      </column>
+      <column id="40" parent="7" name="date">
         <mandatory>1</mandatory>
         <data-type>varchar(15)</data-type>
       </column>
-      <key id="40" parent="7" name="PRIMARY">
+      <key id="41" parent="7" name="PRIMARY">
         <columns>order_id</columns>
         <primary>1</primary>
       </key>
-      <column id="41" parent="8" name="skirt_id">
+      <column id="42" parent="8" name="skirt_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="42" parent="8" name="skirt_name">
+      <column id="43" parent="8" name="skirt_name">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="43" parent="8" name="brand_id">
+      <column id="44" parent="8" name="brand_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="44" parent="8" name="description">
+      <column id="45" parent="8" name="description">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="45" parent="8" name="pic">
+      <column id="46" parent="8" name="pic">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="46" parent="8" name="qty">
+      <column id="47" parent="8" name="qty">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="47" parent="8" name="price">
+      <column id="48" parent="8" name="price">
         <mandatory>1</mandatory>
         <data-type>decimal(5,2)</data-type>
       </column>
-      <column id="48" parent="8" name="num_bought">
+      <column id="49" parent="8" name="num_bought">
         <mandatory>1</mandatory>
         <data-type>int(255)</data-type>
       </column>
-      <key id="49" parent="8" name="PRIMARY">
+      <key id="50" parent="8" name="PRIMARY">
         <columns>skirt_id</columns>
         <primary>1</primary>
       </key>

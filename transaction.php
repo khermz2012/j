@@ -2,22 +2,11 @@
 
 include_once 'User.php';
 include_once 'Item.php';
+include_once 'Mail.php';
 include_once 'render_config.php';
 
 session_start();
 
-//<input type="text" placeholder="Company Name" name="comp_name">
-//<input type="text" placeholder="Email*" name="email" value="{{ email }}" disabled>
-//{#<input type="text" placeholder="Title">#}
-//    <input type="text" placeholder="First Name *" name="firstname">
-//    <input type="text" placeholder="Middle Name" name="middlename">
-//    <input type="text" placeholder="Last Name *" name="lastname">
-//    <input type="text" placeholder="Address*" name="address">
-//    <input type="tel" placeholder="Phone *" maxlength="10" name="phone">
-//    <select name="country">
-
-//$item = new Item();
-//
 if (isset($_POST['mail'])) {
     $email = trim($_POST['mail'], " ");
     $firstname = trim($_POST['firstname'], " ");
@@ -34,6 +23,7 @@ if (isset($_POST['mail'])) {
     $len_phone = strlen($phone);
 
     $item = new Item();
+    $mail = new Mail();
     $date = date('d/m/Y');
 
     if ($len_email == 0 || $len_firstname == 0 || $len_lastname == 0 || $len_address == 0 || $len_phone == 0) {
@@ -78,6 +68,7 @@ if (isset($_POST['mail'])) {
             $cid = $ss1['cust_id'];
 
             $item->makeOrder($cid, $date);
+            $mail->sendAlertMail($firstname,$lastname,$email);
 
             header('Location: orders.php');
         } elseif (!is_null($cust_em['email']) && strcmp($cust_em['email'], $email) === 0) {
@@ -105,6 +96,9 @@ if (isset($_POST['mail'])) {
             $cid = $ss1['cust_id'];
 
             $item->makeOrder($cid, $date);
+            $mail->sendAlertMail($firstname,$lastname,$email);
+
+            header('Location: orders.php');
         }
     }
 }
