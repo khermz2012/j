@@ -22,6 +22,12 @@ class Item extends Adb
         return $this->query($query);
     }
 
+    public function getAllSkirts()
+    {
+        $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id";
+        return $this->query($query);
+    }
+
     public function getSkirtBrands($brand, $sf, $np)
     {
         $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id AND b.brand_name=? LIMIT $sf,$np";
@@ -114,6 +120,15 @@ class Item extends Adb
     {
         $query = "SELECT * FROM brand";
         return $this->query($query);
+    }
+
+    public function search($price)
+    {
+        $query = "SELECT * FROM skirts s INNER JOIN brand b WHERE s.brand_id = b.brand_id AND s.price <= ? ORDER BY s.price DESC ";
+        $s = $this->prepare($query);
+        $s->bind_param('i', $price);
+        $s->execute();
+        return $s->get_result();
     }
 
 }

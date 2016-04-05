@@ -32,10 +32,11 @@ class Administrator extends Adb
         return $this->query($query);
     }
 
-    public function getCustomerDetails($id){
+    public function getCustomerDetails($id)
+    {
         $query = "SELECT c.firstname,c.lastname,c.email,o.date from customer c inner join orders o WHERE c.cust_id = o.cust_id AND o.order_id=?";
         $s = $this->prepare($query);
-        $s->bind_param('i',$id);
+        $s->bind_param('i', $id);
         $s->execute();
         return $s->get_result();
     }
@@ -45,8 +46,21 @@ class Administrator extends Adb
     {
         $query = "UPDATE orders SET confirmed = 1 WHERE order_id=?";
         $s = $this->prepare($query);
-        $s->bind_param('i',$id);
+        $s->bind_param('i', $id);
         $s->execute();
 
+    }
+
+    public function report()
+    {
+        $query = "SELECT s.skirt_name,b.brand_name,s.num_bought FROM skirts s INNER  JOIN brand b on s.brand_id = b.brand_id;";
+        return $this->query($query);
+    }
+
+    public function itemSum()
+    {
+        $query = "SELECT SUM(s.num_bought) as total FROM skirts s INNER JOIN brand b on s.brand_id = b.brand_id";
+        $num = $this->query($query);
+        return $num;
     }
 }

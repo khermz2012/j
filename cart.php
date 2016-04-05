@@ -36,9 +36,14 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
                     'total' => $addSkirt['price'] * $_SESSION['cart'][$id]['quantity']
                 ];
 
-                if ($_SESSION['cart'][$id]['quantity'] > $_SESSION['cart'][$id]['qty']) {
+                if ($_SESSION['cart'][$id]['quantity'] >= $_SESSION['cart'][$id]['qty']) {
                     $_SESSION['cart'][$id]['quantity'] = $_SESSION['cart'][$id]['qty'];
+                    $_SESSION['cart'][$id]['total'] = 0.90 * $_SESSION['cart'][$id]['total'];
                 }
+
+//                if ($_SESSION['cart'][$id]['quantity'] == 10) {
+
+//                }
                 break;
 
             case 'sub':
